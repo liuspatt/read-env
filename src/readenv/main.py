@@ -33,9 +33,9 @@ class ReadEnv:
         self.var_list = var_list
         self.path = path
         self.set_priority(priority)
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        # TODO handling errors
         self.var_list_path = dotenv_values(os.path.join(path, file))
+        for item in self.var_list_path:
+            os.environ[item] = self.var_list_path[item]
 
     def set_priority(self, priority):
         self.priority = priority
